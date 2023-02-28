@@ -7,6 +7,7 @@ import {
 
 import RootLayout from './pages/Root';
 import Home from './pages/Home';
+import ProductDetail from './pages/ProductDetail';
 import Products from './pages/Products';
 import ErrorPage from './pages/Error';
 
@@ -38,6 +39,17 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/products', element: <Products /> },
+      // We might have different paths for different products.
+      // We always wanna load the same page ie. ProductDetail Page.
+      // We wanna load ProductDetail Page for different paths.
+      // That's why react-router-dom supports dynamic path segment or path parameters. You add a parameter to a path so such a dynamic path segment by adding a colon and then any identifier of your choice like id or /:roductId
+      // Dynamic data
+      // { path: '/products/p1', element: <ProductDetail /> },
+      // { path: '/products/p2', element: <ProductDetail /> },
+      // { path: '/products/p3', element: <ProductDetail /> },
+      // { path: '/products/p4', element: <ProductDetail /> },
+      // This signals to React Router DOM that this part of the path is dynamic.
+      { path: '/products/:productId', element: <ProductDetail /> },
     ],
   },
 ]);
